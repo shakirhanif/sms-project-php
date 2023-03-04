@@ -90,7 +90,10 @@
     <div class="navbar-div" >
         <div class="navbar">
           <div class="nav-title">
-            SMS
+            School Management<span> System</span>
+          </div>
+          <div class="head-user">
+            userx21
           </div>
         </div>
       </div>
