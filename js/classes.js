@@ -9,7 +9,9 @@ axios.post("action.php", "action=listClasses").then(({ data, status }) => {
       <td>${x.teacher_id}</td>
       <td>
           <div class="button update">
-              <button type="submit" name="submit"><i class='bx bxs-edit-alt'></i></button>
+              <button id="updateButton" onclick="openModal(event)" data-class-id=${
+                x.id
+              }><i class='bx bxs-edit-alt'></i></button>
           </div>
       </td>
       <td>
@@ -22,29 +24,34 @@ axios.post("action.php", "action=listClasses").then(({ data, status }) => {
   }
 });
 
-// modal
-// Get the modal
-var modal = document.getElementById("addModal");
-
-// Get the button that opens the modal
+// add modal
+var addModal = document.getElementById("addModal");
 var Addbtn = document.getElementById("addButton");
-
-// Get the <span> element that closes the modal
 var closeBtn = document.getElementsByClassName("addClose")[0];
-
-// When the user clicks on the button, open the modal
 Addbtn.onclick = function () {
-  modal.style.display = "flex";
+  addModal.style.display = "flex";
 };
-
-// When the user clicks on <span> (x), close the modal
 closeBtn.onclick = function () {
-  modal.style.display = "none";
+  addModal.style.display = "none";
 };
-
-// When the user clicks anywhere outside of the modal, close it
 window.onclick = function (event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
+  if (event.target == addModal) {
+    addModal.style.display = "none";
   }
 };
+//update button
+function openModal(event) {
+  var el = event.target;
+  console.log(el.dataset.classId);
+  var updateCloseBtn = document.getElementsByClassName("updateClose")[0];
+  var updateModal = document.getElementById("updateModal");
+  updateModal.style.display = "flex";
+  updateCloseBtn.onclick = function () {
+    updateModal.style.display = "none";
+  };
+  window.onclick = function (event) {
+    if (event.target == updateModal) {
+      updateModal.style.display = "none";
+    }
+  };
+}
