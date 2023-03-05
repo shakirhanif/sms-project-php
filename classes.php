@@ -1,51 +1,37 @@
 <?php require "partials/header.php"; ?>
 <link rel="stylesheet" href="css/table.css">
 <div class="header-class">
-    <div>Classes Section</div>
+    <div class="classTitle">Classes Section</div>
     <div class="button">
-        <button type="submit" name="submit">Add Classes</button>
+        <button type="submit" name="submit"><i class='bx bx-plus-medical'></i></button>
     </div>
 </div>
 <div>
-<table class="responstable">
+<table class="responstable" id="classTable">
       <tr>
-        <th>Main driver</th>
-        <th data-th="Driver details"><span>First name</span></th>
-        <th>Surname</th>
-        <th>Date of birth</th>
-        <th>Relationship</th>
+        <th>ID</th>
+        <th data-th="Driver details"><span>Name</span></th>
+        <th>Section</th>
+        <th>class Teacher</th>
+        <th></th>
+        <th></th>
       </tr>
 
       <tr>
-        <td><input type="radio" /></td>
+        <td>1</td>
         <td>Steve</td>
         <td>Foo</td>
         <td>01/01/1978</td>
-        <td>Policyholder</td>
-      </tr>
-
-      <tr>
-        <td><input type="radio" /></td>
-        <td>Steffie</td>
-        <td>Foo</td>
-        <td>01/01/1978</td>
-        <td>Spouse</td>
-      </tr>
-
-      <tr>
-        <td><input type="radio" /></td>
-        <td>Stan</td>
-        <td>Foo</td>
-        <td>01/01/1994</td>
-        <td>Son</td>
-      </tr>
-
-      <tr>
-        <td><input type="radio" /></td>
-        <td>Stella</td>
-        <td>Foo</td>
-        <td>01/01/1992</td>
-        <td>Daughter</td>
+        <td>
+            <div class="button update">
+                <button type="submit" name="submit"><i class='bx bxs-edit-alt'></i></button>
+            </div>
+        </td>
+        <td>
+            <div class="button delete">
+                <button type="submit" name="submit"><i class='bx bxs-trash'></i></button>
+            </div>
+        </td>
       </tr>
     </table>
 </div>
