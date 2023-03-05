@@ -19,6 +19,13 @@
                 header("location: login.php");
             }
         }
+        public function isLoggedIn(){
+            if (isset($_SESSION['email'])) {
+                return true;
+            }else{
+                return false;
+            }
+        }
         public function adminLogin(){
             if (isset($_POST['submit'])) {
                 if ($_POST['email']=='' OR $_POST['password']=='') {

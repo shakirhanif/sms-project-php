@@ -1,7 +1,7 @@
 <?php
   require "class/School.php";
   $school=new School();
-  if (isset($_SESSION['email'])) {
+  if ($school->isLoggedIn()) {
     header("location: index.php");
   }else{
     $school->adminLogin();
