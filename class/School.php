@@ -14,6 +14,11 @@
                 }
             }
         }
+        public function adminLoginstatus(){
+            if (!isset($_SESSION['email'])) {
+                header("location: login.php");
+            }
+        }
         public function adminLogin(){
             if (isset($_POST['submit'])) {
                 if ($_POST['email']=='' OR $_POST['password']=='') {

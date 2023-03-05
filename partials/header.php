@@ -1,8 +1,7 @@
-<?php session_start();?>
 <?php
-    if (!isset($_SESSION['email'])) {
-      header("location: login.php");
-    }
+require "./class/School.php";
+$school=new School();
+$school->adminLoginstatus();
 ?>
 
 <!DOCTYPE html>
