@@ -3,8 +3,57 @@
 <div class="header-class">
     <div class="classTitle">Classes Section</div>
     <div class="button">
-        <button type="submit" name="submit"><i class='bx bx-plus-medical'></i></button>
+        <button id="addButton" ><i class='bx bx-plus-medical'></i></button>
     </div>
+</div>
+<div id="addModal" class="add-modal">
+  <div class="add-modal-content">
+    <span class="addClose"><i class='bx bx-x-circle'></i></span>
+    <!-- form start -->
+    <h1>Add Class</h1>
+
+<form class="survey-form">
+  <div class="form-group">
+    <label
+      >Class Name
+      <input
+        id="name"
+        type="text"
+        placeholder="Enter Your Name..."
+        required
+    /></label>
+  </div>
+  <div class="form-group">
+    <label>
+      Sections
+      <select id="dropdown">
+        <option>(Select one)</option>
+        <option>Student</option>
+        <option>Full time Role</option>
+        <option>Part time Role</option>
+        <option>Other</option>
+      </select>
+    </label>
+  </div>
+  <div class="form-group">
+    <label>
+      Assign Class Teacher
+      <select id="dropdown">
+        <option>(Select one)</option>
+        <option>Student</option>
+        <option>Full time Role</option>
+        <option>Part time Role</option>
+        <option>Other</option>
+      </select>
+    </label>
+  </div>
+  <div class="form-group">
+    <button id="submit">Add Class</button>
+  </div>
+</form>
+    <!-- form end -->
+  </div>
+
 </div>
 <div>
 <table class="responstable" id="classTable">

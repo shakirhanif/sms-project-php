@@ -168,7 +168,7 @@ body {
   left: 60px;
   top: 60px;
   padding: 1.5rem 2.5rem;
-  width: calc(100%-60px);
+  width: calc(100% - 60px);
   overflow-y: auto;
 }
 .sidebar.active ~ .home_content {
