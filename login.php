@@ -1,3 +1,9 @@
+<?php
+  require "class/School.php";
+  $school=new School();
+  $school->adminLogin();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -11,7 +17,7 @@
   </head>
   <body>
     <div class="container">
-      <form action="#">
+      <form action="login.php" method="POST">
         <div class="form-content">
           <div class="login-form">
             <div class="title">Admin Login <span  style="font-size: large;">(SMS)</span></div>
@@ -21,6 +27,8 @@
                 <input
                   type="email"
                   class="input"
+                  id="email"
+                  name="email"
                   placeholder="Enter your email"
                   required
                 />
@@ -32,7 +40,9 @@
               <i class='bx bxs-lock-alt'></i>
                 <input
                   type="password"
+                  id="password"
                   class="input"
+                  name="password"
                   placeholder="Enter your password"
                   required
                 />
@@ -41,7 +51,7 @@
 
             <div class="input-groups">
               <div class="button input-box">
-                <button>Submit</button>
+                <button type="submit" name="submit">Submit</button>
               </div>
             </div>
           </div>

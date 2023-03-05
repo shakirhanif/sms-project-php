@@ -1,3 +1,10 @@
+<?php session_start();?>
+<?php
+    if (!isset($_SESSION['email'])) {
+      header("location: login.php");
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -93,7 +100,7 @@
             School Management<span> System</span>
           </div>
           <div class="head-user">
-            userx21
+            <?php echo $_SESSION['first_name']; ?>
           </div>
         </div>
       </div>
