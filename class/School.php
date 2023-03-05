@@ -2,13 +2,13 @@
     session_start();
     require "config.php";
     class School extends Config{
-        private $conn=false;
+        private $Conn=false;
         public function __construct(){
-            if (!$this->conn) {
+            if (!$this->Conn) {
                 $this->dbConfig();
                 try {
-                    $this->conn = new PDO("mysql:host=$this->host;dbname=$this->dbname;",$this->user,$this->pass);
-                    $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                    $this->Conn = new PDO("mysql:host=$this->host;dbname=$this->dbname;",$this->user,$this->pass);
+                    $this->Conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 } catch (\PDOException $th) {
                     echo $th->getMessage();
                 }
@@ -37,7 +37,7 @@
                 }else{
                   $email=$_POST['email'];
                   $pass=$_POST['password'];
-                  $login = $this->conn->prepare("select * from users where email='$email'");
+                  $login = $this->Conn->prepare("select * from users where email='$email'");
                   $login->execute();
                   $row = $login->FETCH(PDO::FETCH_ASSOC);
                   if ($login->rowCount()>0) {
@@ -51,6 +51,13 @@
                 }
               }
         }
-        
+
+        public function listClasses(){
+            $conn=$this->Conn;
+            $query=$conn->prepare("select * from classes");
+            $query->execute();
+            $rows=$query->fetchAll(PDO::FETCH_ASSOC);
+            echo json_encode($rows);
+        }
     }
 ?>

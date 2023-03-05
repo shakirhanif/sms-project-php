@@ -36,7 +36,7 @@ $school->adminLoginstatus();
           <span class="tooltip">Search</span>
         </li>
         <li>
-          <a href="#">
+          <a href="index.php">
             <i class="bx bx-grid-alt"></i>
             <span class="link_names">Dashboard</span>
           </a>
@@ -50,7 +50,7 @@ $school->adminLoginstatus();
           <span class="tooltip">Students</span>
         </li>
         <li>
-          <a href="#">
+          <a href="classes.php">
           <i class='bx bx-group'></i>
             <span class="link_names">Classes</span>
           </a>
