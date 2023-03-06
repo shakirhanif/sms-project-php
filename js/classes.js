@@ -41,8 +41,14 @@ window.onclick = function (event) {
 };
 //update button
 function openModal(event) {
-  var el = event.target;
-  console.log(el.dataset.classId);
+  let el = event.currentTarget.parentNode.parentNode.parentNode;
+  let classId = parseInt(el.children[0].innerText);
+  console.log(typeof classId);
+  // console.log(el.children[0].innerHTML);
+  // for (let i = 0; i < 4; i++) {
+  //   let tdel = el.children[i].innerHTML;
+  //   console.log(tdel);
+  // }
   var updateCloseBtn = document.getElementsByClassName("updateClose")[0];
   var updateModal = document.getElementById("updateModal");
   updateModal.style.display = "flex";
@@ -54,4 +60,18 @@ function openModal(event) {
       updateModal.style.display = "none";
     }
   };
+}
+//addform submit
+document.getElementById("addForm").addEventListener("submit", addFormSubmit);
+function addFormSubmit(e) {
+  e.preventDefault();
+  let addFormData = new FormData();
+  let name = document.getElementById("addClassName").value;
+  let secName = document.querySelector(".addSecName").value;
+  let addTeaName = document.querySelector(".addTeaName").value;
+  addFormData.append("name", name);
+  addFormData.append("teacherName", addTeaName);
+  addFormData.append("section", secName);
+  console.log(addFormData);
+  // console.log(e.target[0].value);
 }
