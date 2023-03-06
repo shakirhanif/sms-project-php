@@ -395,6 +395,7 @@ h1 {
 }
 
 .survey-form #name,
+.survey-form #addClassName,
 #email,
 textarea {
   padding: 8px;

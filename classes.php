@@ -43,12 +43,12 @@
     <!-- form start -->
     <h1>Add Class</h1>
 
-<form class="survey-form">
+<form class="survey-form" id="addForm" method="POST">
   <div class="form-group">
     <label
       >Class Name
       <input
-        id="name"
+        id="addClassName"
         type="text"
         placeholder="Enter Your Name..."
         required
@@ -57,7 +57,7 @@
   <div class="form-group">
     <label>
       Sections
-      <select id="dropdown">
+      <select id="dropdown" class="addSecName">
         <option>(Select one)</option>
         <option>Student</option>
         <option>Full time Role</option>
@@ -69,7 +69,7 @@
   <div class="form-group">
     <label>
       Assign Class Teacher
-      <select id="dropdown">
+      <select id="dropdown" class="addTeaName">
         <option>(Select one)</option>
         <option>Student</option>
         <option>Full time Role</option>
@@ -79,7 +79,7 @@
     </label>
   </div>
   <div class="form-group">
-    <button id="submit">Add Class</button>
+    <button id="submit" type="submit">Add Class</button>
   </div>
 </form>
     <!-- form end -->
