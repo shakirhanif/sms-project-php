@@ -1,6 +1,15 @@
 const classTable = document.getElementById("classTable");
 fetchFunc();
 function fetchFunc() {
+  classTable.innerHTML = `
+  <tr>
+    <th>ID</th>
+    <th data-th="Driver details"><span>Name</span></th>
+    <th>Section</th>
+    <th>class Teacher</th>
+    <th></th>
+    <th></th>
+  </tr>`;
   axios.post("action.php", "action=listClasses").then(({ data, status }) => {
     if (status === 200) {
       data.forEach((x, i) => {
@@ -11,12 +20,12 @@ function fetchFunc() {
         <td>${x.teacher}</td>
         <td>
             <div class="button update">
-                <button id="updateButton" onclick="openModal(event)"><i class='bx bxs-edit-alt'></i></button>
+                <button onclick="openModal(event)"><i class='bx bxs-edit-alt'></i></button>
             </div>
         </td>
         <td>
             <div class="button delete">
-                <button type="submit" name="submit"><i class='bx bxs-trash'></i></button>
+                <button onclick="deleteClass(event)"><i class='bx bxs-trash'></i></button>
             </div>
         </td>
       </tr>`;
@@ -166,3 +175,15 @@ function updateFormSubmit(e) {
 }
 
 //DELETE CLASS
+function deleteClass(e) {
+  let deleteTr = e.currentTarget.parentNode.parentNode.parentNode;
+  let classId = deleteTr.children[0].innerText;
+  let formData = new FormData();
+  formData.append("action", "deleteClasses");
+  formData.append("class_id", classId);
+  axios.post("action.php", formData).then(({ status }) => {
+    if (status === 200) {
+      fetchFunc();
+    }
+  });
+}

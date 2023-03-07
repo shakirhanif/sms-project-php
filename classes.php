@@ -17,7 +17,7 @@
         <th></th>
         <th></th>
       </tr>
-    </table>
+</table>
 </div>
 <!-- add modal start -->
 <div id="addModal" class="add-modal">

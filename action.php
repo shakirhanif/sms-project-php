@@ -13,6 +13,10 @@ if(isset($_POST['action']) && $_POST['action']=='addClasses'){
 if(isset($_POST['action']) && $_POST['action']=='updateClasses'){
     $sch->updateClasses($_POST['class_id'],$_POST['name'],$_POST['section_id'],$_POST['teacher_id']);
 }
+//delete classes
+if(isset($_POST['action']) && $_POST['action']=='deleteClasses'){
+    $sch->deleteClasses($_POST['class_id']);
+}
 //List Sections
 if(isset($_POST['action']) && $_POST['action']=='listSections'){
     $sch->listSections();

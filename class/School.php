@@ -81,8 +81,16 @@
                 ':teacher_id'=>$teacherId,
                 ':id'=>$id,
             ]);
-            $id=$conn->lastInsertId();
-            echo $id;
+            echo "success";
+        }
+//delete classes
+        public function deleteClasses($id){
+            $conn=$this->Conn;
+            $query=$conn->prepare("delete from classes where id=:id");
+            $query->execute([
+                ':id'=>$id,
+            ]);
+            echo "success";
         }
 // get sections
         public function listSections(){
