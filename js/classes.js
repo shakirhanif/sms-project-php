@@ -31,25 +31,29 @@ var closeBtn = document.getElementsByClassName("addClose")[0];
 Addbtn.onclick = function () {
   addModal.style.display = "flex";
   //fetch sections for form options
-  axios.post("action.php", "action=listSections").then(({ data, status }) => {
-    data.forEach((x) => {
-      let secName = document.querySelector(".addSecName");
-      let option = document.createElement("option");
-      option.appendChild(document.createTextNode(x.section));
-      option.setAttribute("value", x.section_id);
-      secName.appendChild(option);
+  let secName = document.querySelector(".addSecName");
+  if (secName.children.length < 2) {
+    axios.post("action.php", "action=listSections").then(({ data, status }) => {
+      data.forEach((x) => {
+        let option = document.createElement("option");
+        option.appendChild(document.createTextNode(x.section));
+        option.setAttribute("value", x.section_id);
+        secName.appendChild(option);
+      });
     });
-  });
+  }
   //fetch teachers for form options
-  axios.post("action.php", "action=listTeachers").then(({ data, status }) => {
-    data.forEach((x) => {
-      let teacherName = document.querySelector(".addTeaName");
-      let option = document.createElement("option");
-      option.setAttribute("value", x.teacher_id);
-      option.appendChild(document.createTextNode(x.teacher));
-      teacherName.appendChild(option);
+  let teacherName = document.querySelector(".addTeaName");
+  if (teacherName.children.length < 2) {
+    axios.post("action.php", "action=listTeachers").then(({ data, status }) => {
+      data.forEach((x) => {
+        let option = document.createElement("option");
+        option.setAttribute("value", x.teacher_id);
+        option.appendChild(document.createTextNode(x.teacher));
+        teacherName.appendChild(option);
+      });
     });
-  });
+  }
 };
 closeBtn.onclick = function () {
   addModal.style.display = "none";
@@ -62,23 +66,27 @@ window.onclick = function (event) {
 //update button
 function openModal(event) {
   //fetch sections for form options
-  axios.post("action.php", "action=listSections").then(({ data, status }) => {
-    data.forEach((x) => {
-      let secName = document.querySelector(".updateSecName");
-      let option = document.createElement("option");
-      option.appendChild(document.createTextNode(x.section));
-      secName.appendChild(option);
+  let secName = document.querySelector(".updateSecName");
+  if (secName.children.length < 2) {
+    axios.post("action.php", "action=listSections").then(({ data, status }) => {
+      data.forEach((x) => {
+        let option = document.createElement("option");
+        option.appendChild(document.createTextNode(x.section));
+        secName.appendChild(option);
+      });
     });
-  });
+  }
   //fetch teachers for form options
-  axios.post("action.php", "action=listTeachers").then(({ data, status }) => {
-    data.forEach((x) => {
-      let teacherName = document.querySelector(".updateTeaName");
-      let option = document.createElement("option");
-      option.appendChild(document.createTextNode(x.teacher));
-      teacherName.appendChild(option);
+  let teacherName = document.querySelector(".updateTeaName");
+  if (secName.children.length < 2) {
+    axios.post("action.php", "action=listTeachers").then(({ data, status }) => {
+      data.forEach((x) => {
+        let option = document.createElement("option");
+        option.appendChild(document.createTextNode(x.teacher));
+        teacherName.appendChild(option);
+      });
     });
-  });
+  }
   // let el = event.currentTarget.parentNode.parentNode.parentNode;
   // let classId = parseInt(el.children[0].innerText);
   // console.log(typeof classId);

@@ -17,23 +17,6 @@
         <th></th>
         <th></th>
       </tr>
-
-      <tr>
-        <td>1</td>
-        <td>Steve</td>
-        <td>Foo</td>
-        <td>01/01/1978</td>
-        <td>
-            <div class="button update">
-                <button id="updateButton" onclick="openModal(event)"><i class='bx bxs-edit-alt'></i></button>
-            </div>
-        </td>
-        <td>
-            <div class="button delete">
-                <button><i class='bx bxs-trash'></i></button>
-            </div>
-        </td>
-      </tr>
     </table>
 </div>
 <!-- add modal start -->
