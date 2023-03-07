@@ -51,10 +51,38 @@
                 }
               }
         }
-
+//List classes
         public function listClasses(){
             $conn=$this->Conn;
             $query=$conn->prepare("select * from classes");
+            $query->execute();
+            $rows=$query->fetchAll(PDO::FETCH_ASSOC);
+            echo json_encode($rows);
+        }
+//add classes
+        public function addClasses($name,$sectionId,$teacherId){
+            $conn=$this->Conn;
+            $query=$conn->prepare("insert into classes (name,section,teacher_id) values(:name,:section,:teacher_id)");
+            $query->execute([
+                ':name'=>$name,
+                ':section'=>$sectionId,
+                ':teacher_id'=>$teacherId,
+            ]);
+            $id=$conn->lastInsertId();
+            echo $id;
+        }
+// get sections
+        public function listSections(){
+            $conn=$this->Conn;
+            $query=$conn->prepare("select * from sections");
+            $query->execute();
+            $rows=$query->fetchAll(PDO::FETCH_ASSOC);
+            echo json_encode($rows);
+        }
+// get Teachers
+        public function listTeachers(){
+            $conn=$this->Conn;
+            $query=$conn->prepare("select * from teachers");
             $query->execute();
             $rows=$query->fetchAll(PDO::FETCH_ASSOC);
             echo json_encode($rows);

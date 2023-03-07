@@ -59,10 +59,6 @@
       Sections
       <select id="dropdown" class="addSecName">
         <option>(Select one)</option>
-        <option>Student</option>
-        <option>Full time Role</option>
-        <option>Part time Role</option>
-        <option>Other</option>
       </select>
     </label>
   </div>
@@ -71,15 +67,11 @@
       Assign Class Teacher
       <select id="dropdown" class="addTeaName">
         <option>(Select one)</option>
-        <option>Student</option>
-        <option>Full time Role</option>
-        <option>Part time Role</option>
-        <option>Other</option>
       </select>
     </label>
   </div>
   <div class="form-group">
-    <button id="submit" type="submit">Add Class</button>
+    <button id="addClassSubmit" type="submit">Add Class</button>
   </div>
 </form>
     <!-- form end -->
@@ -108,24 +100,16 @@
   <div class="form-group">
     <label>
       Sections
-      <select id="dropdown">
+      <select id="dropdown" class="updateSecName">
         <option>(Select one)</option>
-        <option>Student</option>
-        <option>Full time Role</option>
-        <option>Part time Role</option>
-        <option>Other</option>
       </select>
     </label>
   </div>
   <div class="form-group">
     <label>
       Assign Class Teacher
-      <select id="dropdown">
+      <select id="dropdown" class="updateTeaName">
         <option>(Select one)</option>
-        <option>Student</option>
-        <option>Full time Role</option>
-        <option>Part time Role</option>
-        <option>Other</option>
       </select>
     </label>
   </div>
