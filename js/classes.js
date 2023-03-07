@@ -55,16 +55,17 @@ Addbtn.onclick = function () {
       });
     });
   }
+  window.onclick = function (event) {
+    if (event.target == addModal) {
+      addModal.style.display = "none";
+    }
+  };
 };
 closeBtn.onclick = function () {
   addModal.style.display = "none";
 };
-window.onclick = function (event) {
-  if (event.target == addModal) {
-    addModal.style.display = "none";
-  }
-};
 //update button
+var updateModal = document.getElementById("updateModal");
 function openModal(event) {
   //fetch sections for form options
   let secName = document.querySelector(".updateSecName");
@@ -105,7 +106,6 @@ function openModal(event) {
   //   console.log(tdel);
   // }
   var updateCloseBtn = document.getElementsByClassName("updateClose")[0];
-  var updateModal = document.getElementById("updateModal");
   updateModal.style.display = "flex";
   updateCloseBtn.onclick = function () {
     updateModal.style.display = "none";
