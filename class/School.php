@@ -71,6 +71,19 @@
             $id=$conn->lastInsertId();
             echo $id;
         }
+//add classes
+        public function updateClasses($id,$name,$sectionId,$teacherId){
+            $conn=$this->Conn;
+            $query=$conn->prepare("update classes set name=:name,section=:section,teacher_id=:teacher_id where id=:id");
+            $query->execute([
+                ':name'=>$name,
+                ':section'=>$sectionId,
+                ':teacher_id'=>$teacherId,
+                ':id'=>$id,
+            ]);
+            $id=$conn->lastInsertId();
+            echo $id;
+        }
 // get sections
         public function listSections(){
             $conn=$this->Conn;

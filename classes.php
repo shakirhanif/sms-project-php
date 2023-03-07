@@ -41,7 +41,6 @@
     <label>
       Sections
       <select id="dropdown" class="addSecName">
-        <option>(Select one)</option>
       </select>
     </label>
   </div>
@@ -49,7 +48,6 @@
     <label>
       Assign Class Teacher
       <select id="dropdown" class="addTeaName">
-        <option>(Select one)</option>
       </select>
     </label>
   </div>
@@ -69,12 +67,12 @@
     <!-- form start -->
     <h1>Update Class</h1>
 
-<form class="survey-form">
+<form class="survey-form" id="updateForm">
   <div class="form-group">
     <label
       >Class Name
       <input
-        id="name"
+        id="updateClassName"
         type="text"
         placeholder="Enter Your Name..."
         required
@@ -84,7 +82,6 @@
     <label>
       Sections
       <select id="dropdown" class="updateSecName">
-        <option>(Select one)</option>
       </select>
     </label>
   </div>
@@ -92,12 +89,11 @@
     <label>
       Assign Class Teacher
       <select id="dropdown" class="updateTeaName">
-        <option>(Select one)</option>
       </select>
     </label>
   </div>
   <div class="form-group">
-    <button id="submit">Update Class</button>
+    <button id="updateClassSubmit" >Update Class</button>
   </div>
 </form>
     <!-- form end -->

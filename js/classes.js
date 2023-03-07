@@ -1,28 +1,29 @@
 const classTable = document.getElementById("classTable");
-axios.post("action.php", "action=listClasses").then(({ data, status }) => {
-  if (status === 200) {
-    data.forEach((x, i) => {
-      classTable.innerHTML += `<tr class=${i % 2 === 0 ? "trEven" : "trOdd"}>
-      <td>${x.id}</td>
-      <td>${x.name}</td>
-      <td>${x.section}</td>
-      <td>${x.teacher_id}</td>
-      <td>
-          <div class="button update">
-              <button id="updateButton" onclick="openModal(event)" data-class-id=${
-                x.id
-              }><i class='bx bxs-edit-alt'></i></button>
-          </div>
-      </td>
-      <td>
-          <div class="button delete">
-              <button type="submit" name="submit"><i class='bx bxs-trash'></i></button>
-          </div>
-      </td>
-    </tr>`;
-    });
-  }
-});
+fetchFunc();
+function fetchFunc() {
+  axios.post("action.php", "action=listClasses").then(({ data, status }) => {
+    if (status === 200) {
+      data.forEach((x, i) => {
+        classTable.innerHTML += `<tr class=${i % 2 === 0 ? "trEven" : "trOdd"}>
+        <td>${x.id}</td>
+        <td>${x.name}</td>
+        <td>${x.section}</td>
+        <td>${x.teacher_id}</td>
+        <td>
+            <div class="button update">
+                <button id="updateButton" onclick="openModal(event)"><i class='bx bxs-edit-alt'></i></button>
+            </div>
+        </td>
+        <td>
+            <div class="button delete">
+                <button type="submit" name="submit"><i class='bx bxs-trash'></i></button>
+            </div>
+        </td>
+      </tr>`;
+      });
+    }
+  });
+}
 
 // add modal
 var addModal = document.getElementById("addModal");
@@ -72,6 +73,7 @@ function openModal(event) {
       data.forEach((x) => {
         let option = document.createElement("option");
         option.appendChild(document.createTextNode(x.section));
+        option.setAttribute("value", x.section_id);
         secName.appendChild(option);
       });
     });
@@ -83,12 +85,19 @@ function openModal(event) {
       data.forEach((x) => {
         let option = document.createElement("option");
         option.appendChild(document.createTextNode(x.teacher));
+        option.setAttribute("value", x.teacher_id);
         teacherName.appendChild(option);
       });
     });
   }
-  // let el = event.currentTarget.parentNode.parentNode.parentNode;
-  // let classId = parseInt(el.children[0].innerText);
+  let el = event.currentTarget.parentNode.parentNode.parentNode;
+  let classId = parseInt(el.children[0].innerText);
+  let className = el.children[1].innerText;
+
+  let formClassName = document.getElementById("updateClassName");
+  formClassName.dataset.classId = classId;
+  formClassName.value = className;
+
   // console.log(typeof classId);
   // console.log(el.children[0].innerHTML);
   // for (let i = 0; i < 4; i++) {
@@ -122,24 +131,35 @@ function addFormSubmit(e) {
   addFormData.append("teacher_id", addTeaName);
   addFormData.append("action", "addClasses");
   axios.post("action.php", addFormData).then(({ data, status }) => {
-    classTable.innerHTML += `<tr class="trEven">
-      <td>${data}</td>
-      <td>${name}</td>
-      <td>${secName}</td>
-      <td>${addTeaName}</td>
-      <td>
-          <div class="button update">
-              <button id="updateButton" onclick="openModal(event)"><i class='bx bxs-edit-alt'></i></button>
-          </div>
-      </td>
-      <td>
-          <div class="button delete">
-              <button type="submit" name="submit"><i class='bx bxs-trash'></i></button>
-          </div>
-      </td>
-    </tr>`;
+    fetchFunc();
     let addModalForm = document.getElementById("addModal");
     addModalForm.style.display = "none";
+  });
+  // console.log(addFormData);
+  // console.log(e.target[0].value);
+}
+//update form submit
+document
+  .getElementById("updateForm")
+  .addEventListener("submit", updateFormSubmit);
+function updateFormSubmit(e) {
+  e.preventDefault();
+  let updateSubmitBtn = document.getElementById("updateClassSubmit");
+  updateSubmitBtn.style.cursor = "not-allowed";
+  let updateFormData = new FormData();
+  let name = document.getElementById("updateClassName").value;
+  let secName = document.querySelector(".updateSecName").value;
+  let addTeaName = document.querySelector(".updateTeaName").value;
+  let classId = document.getElementById("updateClassName").dataset.classId;
+  updateFormData.append("class_id", classId);
+  updateFormData.append("name", name);
+  updateFormData.append("section_id", secName);
+  updateFormData.append("teacher_id", addTeaName);
+  updateFormData.append("action", "updateClasses");
+  axios.post("action.php", updateFormData).then(({ data, status }) => {
+    fetchFunc();
+    let updateModalForm = document.getElementById("updateModal");
+    updateModalForm.style.display = "none";
   });
   // console.log(addFormData);
   // console.log(e.target[0].value);
