@@ -8,7 +8,7 @@ function fetchFunc() {
         <td>${x.id}</td>
         <td>${x.name}</td>
         <td>${x.section}</td>
-        <td>${x.teacher_id}</td>
+        <td>${x.teacher}</td>
         <td>
             <div class="button update">
                 <button id="updateButton" onclick="openModal(event)"><i class='bx bxs-edit-alt'></i></button>
@@ -164,3 +164,5 @@ function updateFormSubmit(e) {
   // console.log(addFormData);
   // console.log(e.target[0].value);
 }
+
+//DELETE CLASS
