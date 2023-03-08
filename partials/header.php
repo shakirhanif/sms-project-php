@@ -43,7 +43,7 @@ $school->adminLoginstatus();
           <span class="tooltip">Dashboard</span>
         </li>
         <li>
-          <a href="#">
+          <a href="students.php">
           <i class='bx bx-user-pin'></i>
             <span class="link_names">Students</span>
           </a>
