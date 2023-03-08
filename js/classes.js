@@ -78,6 +78,7 @@ var updateModal = document.getElementById("updateModal");
 function openModal(event) {
   //fetch sections for form options
   let secName = document.querySelector(".updateSecName");
+  let el = event.currentTarget.parentNode.parentNode.parentNode;
   if (secName.children.length < 2) {
     axios.post("action.php", "action=listSections").then(({ data, status }) => {
       data.forEach((x) => {
@@ -87,10 +88,20 @@ function openModal(event) {
         secName.appendChild(option);
       });
     });
+  } else {
+    for (let i = 0; i < secName.children.length; i++) {
+      const x = secName.children[i];
+
+      if (!(x.innerHTML === el.children[2].innerHTML)) {
+        x.removeAttribute("selected");
+      } else if (x.innerHTML === el.children[2].innerHTML) {
+        x.setAttribute("selected", "selected");
+      }
+    }
   }
   //fetch teachers for form options
   let teacherName = document.querySelector(".updateTeaName");
-  if (secName.children.length < 2) {
+  if (teacherName.children.length < 2) {
     axios.post("action.php", "action=listTeachers").then(({ data, status }) => {
       data.forEach((x) => {
         let option = document.createElement("option");
@@ -99,8 +110,17 @@ function openModal(event) {
         teacherName.appendChild(option);
       });
     });
+  } else {
+    for (let i = 0; i < teacherName.children.length; i++) {
+      const x = teacherName.children[i];
+
+      if (!(x.innerHTML === el.children[3].innerHTML)) {
+        x.removeAttribute("selected");
+      } else if (x.innerHTML === el.children[3].innerHTML) {
+        x.setAttribute("selected", "selected");
+      }
+    }
   }
-  let el = event.currentTarget.parentNode.parentNode.parentNode;
   let classId = parseInt(el.children[0].innerText);
   let className = el.children[1].innerText;
 
@@ -142,6 +162,7 @@ function addFormSubmit(e) {
   axios.post("action.php", addFormData).then(({ data, status }) => {
     fetchFunc();
     let addModalForm = document.getElementById("addModal");
+    addSubmitBtn.style.cursor = "pointer";
     addModalForm.style.display = "none";
   });
   // console.log(addFormData);
@@ -168,6 +189,7 @@ function updateFormSubmit(e) {
   axios.post("action.php", updateFormData).then(({ data, status }) => {
     fetchFunc();
     let updateModalForm = document.getElementById("updateModal");
+    updateSubmitBtn.style.cursor = "pointer";
     updateModalForm.style.display = "none";
   });
   // console.log(addFormData);
